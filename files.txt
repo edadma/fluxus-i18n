@@ -1,0 +1,24 @@
+; fluxus.i18n code
+
+# library sources
+./library/src/main/scala/io/github/edadma/fluxus/i18n
+I18n.scala
+
+# test sources
+./library/src/test/scala/io/github/edadma/fluxus/i18n
+DOMSpec.scala
+I18nTests.scala
+
+# build files
+./
+build.sbt
+main.js
+package.json
+tailwind.config.js
+vite.config.js
+./project
+plugins.sbt
+
+# docs
+./
+README.md
