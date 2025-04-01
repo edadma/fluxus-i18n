@@ -1,4 +1,4 @@
-package io.github.edadma.fluxus.testing
+package io.github.edadma.fluxus.i18n
 
 import io.github.edadma.fluxus._
 import org.scalajs.dom

@@ -1,19 +1,20 @@
-package io.github.edadma.fluxus
+package io.github.edadma.fluxus.i18n
 
+import io.github.edadma.fluxus.{useSignal, logger}
+import com.raquo.airstream.core.Signal
 import com.raquo.airstream.state.Var
-import io.github.edadma.yaml._
+import io.github.edadma.yaml.*
 
 object I18n {
   // The current language signal
-  val currentLanguage = Var[String]("en")
+  val currentLanguage: Var[String] = Var[String]("en")
 
   // Translation data storage - flat maps with dot notation keys
   private[fluxus] var translationData: Map[String, Map[String, String]] = Map.empty
 
   // Signal derived from current language that provides the current translations
-  val translations = currentLanguage.signal.map(lang =>
-    translationData.getOrElse(lang, Map.empty),
-  )
+  val translations: Signal[Map[String, String]] =
+    currentLanguage.signal.map(lang => translationData.getOrElse(lang, Map.empty))
 
   // Load translations from YAML string
   def loadTranslation(lang: String, yamlString: String): Unit = {
