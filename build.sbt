@@ -19,8 +19,8 @@ ThisBuild / sonatypeProfileName := "io.github.edadma"
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
-    url("https://github.com/edadma/fluxus"),
-    "scm:git@github.com:edadma/fluxus.git",
+    url("https://github.com/edadma/fluxus-i18n"),
+    "scm:git@github.com:edadma/fluxus-i18n.git",
   ),
 )
 ThisBuild / developers := List(
@@ -58,22 +58,22 @@ lazy val library = project
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(
-    name        := "fluxus-library-template",
+    name        := "fluxus-i18n",
     description := "A template for fluxus libraries",
     libraryDependencies ++= Seq(
       "org.scalatest"    %%% "scalatest" % "3.2.19" % "test",
       "com.lihaoyi"      %%% "pprint"    % "0.9.0"  % "test",
-      "io.github.edadma" %%% "fluxus"    % "0.0.2",
+      "io.github.edadma" %%% "fluxus"    % "0.0.8",
     ),
-    jsEnv                                  := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
-    scalaJSUseMainModuleInitializer        := true,
-    Test / scalaJSUseMainModuleInitializer := true,
-    Test / scalaJSUseTestModuleInitializer := false,
-//    Test / scalaJSUseMainModuleInitializer := false,
-//    Test / scalaJSUseTestModuleInitializer := true,
-    Test / parallelExecution := false,
-    publishMavenStyle        := true,
-    Test / publishArtifact   := false,
+    jsEnv                           := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
+    scalaJSUseMainModuleInitializer := true,
+//    Test / scalaJSUseMainModuleInitializer := true,
+//    Test / scalaJSUseTestModuleInitializer := false,
+    Test / scalaJSUseMainModuleInitializer := false,
+    Test / scalaJSUseTestModuleInitializer := true,
+    Test / parallelExecution               := false,
+    publishMavenStyle                      := true,
+    Test / publishArtifact                 := false,
   )
 
 lazy val examples = project
@@ -83,14 +83,14 @@ lazy val examples = project
   .settings(
     name := "examples",
     libraryDependencies ++= Seq(
-      "io.github.edadma" %%% "fluxus" % "0.0.1",
+      "io.github.edadma" %%% "fluxus" % "0.0.8",
     ),
     scalaJSUseMainModuleInitializer := true,
     publish / skip                  := true,
     publishLocal / skip             := true,
   )
 
-lazy val fluxus_library_template = project
+lazy val fluxus_i18n = project
   .in(file("."))
   .aggregate(library, examples)
   .settings(
