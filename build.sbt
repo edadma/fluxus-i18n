@@ -59,7 +59,7 @@ lazy val library = project
   .settings(commonSettings)
   .settings(
     name        := "fluxus-i18n",
-    description := "A template for fluxus libraries",
+    description := "A lightweight internationalization (i18n) library for the Fluxus UI framework",
     libraryDependencies ++= Seq(
       "org.scalatest"    %%% "scalatest" % "3.2.19" % "test",
       "com.lihaoyi"      %%% "pprint"    % "0.9.0"  % "test",
