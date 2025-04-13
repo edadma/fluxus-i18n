@@ -186,7 +186,7 @@ units:
   kilometersPerLiter: kilometers per liter
 
 footer:
-  copyright: "© 2025 Universal Unit Converter"
+  copyright: © 2025 Universal Unit Converter
   privacy: Privacy Policy
   about: About
   contact: Contact
@@ -195,7 +195,7 @@ footer:
   // French translations
   val frTranslations = """
 app:
-  title: "Convertisseur Universel d'Unités"
+  title: Convertisseur Universel d'Unités
   categories: Catégories
   show: Afficher
   hide: Masquer
