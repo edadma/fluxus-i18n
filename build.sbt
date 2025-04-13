@@ -64,6 +64,7 @@ lazy val library = project
       "org.scalatest"    %%% "scalatest" % "3.2.19" % "test",
       "com.lihaoyi"      %%% "pprint"    % "0.9.0"  % "test",
       "io.github.edadma" %%% "fluxus"    % "0.0.8",
+      "io.github.edadma" %%% "yaml"      % "0.0.1",
     ),
     jsEnv                           := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
     scalaJSUseMainModuleInitializer := true,
