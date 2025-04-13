@@ -5,7 +5,7 @@ ThisBuild / scalaVersion           := "3.6.4"
 ThisBuild / organization           := "io.github.edadma"
 ThisBuild / organizationName       := "edadma"
 ThisBuild / organizationHomepage   := Some(url("https://github.com/edadma"))
-ThisBuild / version                := "0.0.2"
+ThisBuild / version                := "0.0.3"
 ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
 ThisBuild / sonatypeRepository     := "https://s01.oss.sonatype.org/service/local"
 
@@ -61,10 +61,10 @@ lazy val library = project
     name        := "fluxus-i18n",
     description := "A lightweight internationalization (i18n) library for the Fluxus UI framework",
     libraryDependencies ++= Seq(
-      "org.scalatest"    %%% "scalatest" % "3.2.19" % "test",
-      "com.lihaoyi"      %%% "pprint"    % "0.9.0"  % "test",
-      "io.github.edadma" %%% "fluxus"    % "0.0.21",
-      "io.github.edadma" %%% "yaml"      % "0.0.1",
+      "org.scalatest"    %%% "scalatest"  % "3.2.19" % "test",
+      "com.lihaoyi"      %%% "pprint"     % "0.9.0"  % "test",
+      "io.github.edadma" %%% "fluxus"     % "0.0.21",
+      "org.virtuslab"    %%% "scala-yaml" % "0.3.0",
     ),
     jsEnv                           := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
     scalaJSUseMainModuleInitializer := true,

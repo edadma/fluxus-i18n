@@ -3,7 +3,7 @@ package io.github.edadma.fluxus.i18n
 import io.github.edadma.fluxus.{useSignal, logger}
 import com.raquo.airstream.core.Signal
 import com.raquo.airstream.state.Var
-import io.github.edadma.yaml.*
+import org.virtuslab.yaml.*
 
 object I18n {
   // The current language signal
@@ -18,28 +18,19 @@ object I18n {
 
   // Load translations from YAML string
   def loadTranslation(lang: String, yamlString: String): Unit = {
-    try {
-      val yamlNode  = readFromString(yamlString)
-      val dataMap   = yamlNode.construct.asInstanceOf[Map[String, Any]]
-      val flattened = flattenTranslations(dataMap)
+    yamlString.as[Any] match {
+      case Right(data) =>
+        val dataMap   = data.asInstanceOf[Map[String, Any]]
+        val flattened = flattenTranslations(dataMap)
+        translationData = translationData + (lang -> flattened)
 
-      translationData = translationData + (lang -> flattened)
-      logger.debug(
-        "Loaded translations",
-        category = "I18n",
-        Map(
-          "language" -> lang,
-          "keyCount" -> flattened.size.toString,
-        ),
-      )
-    } catch {
-      case e: Throwable =>
+      case Left(error) =>
         logger.error(
           "Failed to load translations",
           category = "I18n",
-          Map(
+          metadata = Map(
             "language" -> lang,
-            "error"    -> e.toString,
+            "error"    -> error.toString,
           ),
         )
     }
@@ -63,7 +54,7 @@ object I18n {
       logger.debug(
         "Changing language",
         category = "I18n",
-        Map(
+        metadata = Map(
           "from" -> currentLanguage.now(),
           "to"   -> lang,
         ),
@@ -73,7 +64,7 @@ object I18n {
       logger.warn(
         "Language not available",
         category = "I18n",
-        Map(
+        metadata = Map(
           "requestedLanguage"  -> lang,
           "currentLanguage"    -> currentLanguage.now(),
           "availableLanguages" -> translationData.keys.mkString(", "),
