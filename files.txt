@@ -1,5 +1,9 @@
 ; fluxus.i18n code
 
+# example sources
+./examples/src/main/scala/io/github/edadma/fluxus/i18n/examples
+I18nData.scala
+
 # library sources
 ./library/src/main/scala/io/github/edadma/fluxus/i18n
 I18n.scala
